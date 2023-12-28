@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="tdZsC2hD70SfoftV6_9M" name="Page-1">
-        <mxGraphModel dx="850" dy="755" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2000" dy="755" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -55,9 +55,6 @@
                         <Array as="points"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="19" value="2" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="196" y="284" width="30" height="31" as="geometry"/>
-                </mxCell>
                 <mxCell id="22" value="Git HUB" style="whiteSpace=wrap;html=1;fontSize=16;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="560" y="440" width="210" height="240" as="geometry"/>
                 </mxCell>
@@ -82,16 +79,41 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="29" value="4" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="358" y="284" width="30" height="31" as="geometry"/>
+                    <mxGeometry x="504" y="492" width="30" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="30" value="5" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="504" y="168" width="30" height="31" as="geometry"/>
+                    <mxGeometry x="361" y="284" width="30" height="31" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="507" y="590" width="30" height="31" as="geometry"/>
+                <mxCell id="18" value="6" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="162" width="30" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="20" value="3" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="504" y="489" width="30" height="31" as="geometry"/>
+                    <mxGeometry x="195" y="284" width="30" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Build&lt;br style=&quot;font-size: 16px;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-weight: normal; background-color: initial;&quot;&gt;1) Создание docker-образа для сборки JAVA-приложений&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;font-weight: normal; font-size: 16px;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;2) Отправка этого образа в Nexus&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=16;verticalAlign=top;fontStyle=1;align=center;spacing=11;" vertex="1" parent="1">
+                    <mxGeometry x="-170" y="120" width="210" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="docker image&lt;br style=&quot;font-size: 13px;&quot;&gt;для сборки в нём JAVA приложения" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="-130" y="259.5" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;spacingTop=2;strokeWidth=5;fillColor=#f8cecc;strokeColor=#b85450;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="32" target="4">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="-100" y="450" as="sourcePoint"/>
+                        <mxPoint y="690" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="163" width="30" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="2" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="507" y="591" width="30" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="go http://IP:8080/java_hello_world" style="whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="322" width="210" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="7" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="566" y="322" width="30" height="31" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
