@@ -1,0 +1,99 @@
+<mxfile host="65bd71144e">
+    <diagram id="tdZsC2hD70SfoftV6_9M" name="Page-1">
+        <mxGraphModel dx="850" dy="755" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Jenkins" style="whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=20;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="320" width="360" height="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Nexus" style="whiteSpace=wrap;html=1;fontSize=20;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="120" y="40" width="360" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="docker image&lt;br style=&quot;font-size: 13px;&quot;&gt;для сборки в нём JAVA приложения" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="80" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Сборщик" style="whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="430" width="340" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;1) получение docker-image из nexus&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;и свя работа выполняется внутри него&lt;/span&gt;&lt;/div&gt;2) сборка JAVA приложения WAR&lt;br&gt;внутри этого&amp;nbsp;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;2) создание docker-образа c&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Tomcat + WAR&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;3) отправка нового docker-образа в nexus&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="479" width="280" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="v1.0.0&lt;br&gt;docker image&lt;br style=&quot;font-size: 13px;&quot;&gt;сайта на Tomcat" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="80" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="v1.0.1&lt;br&gt;docker image&lt;br style=&quot;font-size: 13px;&quot;&gt;сайта на Tomcat" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="295" y="100" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="v1.0.2&lt;br&gt;docker image&lt;br style=&quot;font-size: 13px;&quot;&gt;сайта на Tomcat" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="120" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;spacingTop=2;strokeWidth=5;fillColor=#f8cecc;strokeColor=#b85450;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="4" target="6" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="530" y="240" as="sourcePoint"/>
+                        <mxPoint x="610" y="240" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;spacingTop=2;strokeWidth=5;fillColor=#f8cecc;strokeColor=#b85450;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" parent="1" source="6" target="9" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="540" y="280" as="sourcePoint"/>
+                        <mxPoint x="620" y="280" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Prod&lt;br style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;font-weight: normal; font-size: 16px;&quot;&gt;Получение и запуск&lt;br style=&quot;font-size: 16px;&quot;&gt;docker-образа&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=16;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="560" y="120" width="210" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="v1.0.2&lt;br&gt;docker image&lt;br style=&quot;font-size: 13px;&quot;&gt;сайта на Tomcat" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="200" width="150" height="111" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;spacingTop=2;strokeWidth=5;fillColor=#f8cecc;strokeColor=#b85450;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="9" target="14" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="540" y="310" as="sourcePoint"/>
+                        <mxPoint x="660" y="230" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="2" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="196" y="284" width="30" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Git HUB" style="whiteSpace=wrap;html=1;fontSize=16;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="560" y="440" width="210" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Jenkins PIPELINE&lt;br&gt;скрипт сборки" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="580" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;spacingTop=2;strokeWidth=5;fillColor=#f8cecc;strokeColor=#b85450;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="23" target="5" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="460" y="450" as="sourcePoint"/>
+                        <mxPoint x="500" y="650" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="JAVA-проект из которого собираем WAR-файл" style="whiteSpace=wrap;html=1;fontSize=13;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="479" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;spacingTop=2;strokeWidth=5;fillColor=#f8cecc;strokeColor=#b85450;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="25" target="6" edge="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="540" y="751.4300000000001" as="sourcePoint"/>
+                        <mxPoint x="430" y="720.0014285714287" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="4" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="358" y="284" width="30" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="5" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="504" y="168" width="30" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="507" y="590" width="30" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="3" style="ellipse;whiteSpace=wrap;html=1;fontSize=23;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="504" y="489" width="30" height="31" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
