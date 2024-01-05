@@ -1,48 +1,65 @@
 pipeline {
   agent {
-
     docker {
-      image 'devcvs-srv01:5000/shop2-backend/jenkins-agent'
+      image 'nexus-srv:8123/build_environment:v1.0.0'
     }
-
   }
 
   stages {
 
-    stage('Copy source with configs') {
+    stage('Copy PROJECT source from GitHub') {
       steps {
-        git(url: 'http://cvs.tinkoff-dbs1.west.com/backendsbox/shop2.backend.git', branch: 'backend1-staging', poll: true, credentialsId: 'git')
-        sh 'ssh-keyscan -H devbuild-srv01 >> ~/.ssh/known_hosts'
-        sh 'scp jenkins@devbuild-srv01:/home/jenkins/build/configs/staging/gateway-api/application-business-config-defaults.yml gateway-api/src/main/resources/application-business-config-defaults.yml'
+        git(url: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git', branch: 'master', poll: true, credentialsId: 'git')
       }
     }
 
-    stage('Build jar') {
+    stage('Build war-file') {
       steps {
-        sh 'gradle bootRepackage'
+        sh 'cd ./boxfuse-sample-java-war-hello && mvn package'
       }
     }
 
-    stage('Make docker image') {
-      steps {
-        sh 'cp -R gateway-api/build/libs/* docker-setup/shop/gateway-api && cd docker-setup/shop/gateway-api && docker build --tag=gateway-api .'
-        sh '''docker tag gateway-api devcvs-srv01:5000/shop2-backend/gateway-api:2-staging && docker push devcvs-srv01:5000/shop2-backend/gateway-api:2-staging'''
 
+
+    stage('Copy FILES from GitHub') {
+      steps {
+        git(url: 'https://github.com/spring108/jenkins_pipeline.git', branch: 'master', poll: true, credentialsId: 'git')
       }
     }
 
-    stage('Run docker on devbe-srv01') {
+
+    stage('Prepare docker service') {
       steps {
-        sh 'ssh-keyscan -H devbe-srv01 >> ~/.ssh/known_hosts'
-        sh '''ssh jenkins@devbe-srv01 << EOF
-	sudo docker pull devcvs-srv01:5000/shop2-backend/gateway-api:2-staging
-	cd /etc/shop/docker
-	sudo docker-compose up -d
+        sh '''echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
+        service docker restart
+        docker login nexus-srv:8123 --username admin --password 34-Nexus-!
+EOF'''
+      }
+    }
+
+    stage('Copy artifact (with rename) nearly Dockerfile') {
+      steps {
+        sh 'cp ./boxfuse-sample-java-war-hello/target/hello-1.0.war ./jenkins_pipeline/jenkins/hello.war'
+      }
+    }
+
+
+    stage('Make docker image by Dockerfile and hello.war') {
+      steps {
+        sh 'cd ./jenkins_pipeline/jenkins && docker build -t myweb2:v2.0.0 .'
+        sh '''docker tag myweb2:v2.0.0 nexus-srv:8123/myweb2:v2.0.0 && docker push nexus-srv:8123/myweb2:v2.0.0'''
+      }
+    }
+
+    stage('Run docker on prod-srv') {
+      steps {
+        sh 'ssh-keyscan -H prod-srv >> ~/.ssh/known_hosts'
+        sh '''ssh root@prod-srv << EOF
+	      docker pull nexus-srv:8123/myweb2:v2.0.0
+        docker run -d -p 8080:8080 nexus-srv:8123/myweb2:v2.0.0
 EOF'''
       }
     }
   }
-  triggers {
-    pollSCM('*/1 H * * *')
-  }
+
 }

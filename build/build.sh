@@ -22,7 +22,7 @@ fi
 
 if [ "$my_version" = "" ]
 then
-	echo 'No version in parameter #3, use default v1.0.0'
+	echo 'No version in parameter #3, default v1.0.0 used'
 	my_version="v1.0.0"
 fi
 
