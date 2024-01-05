@@ -22,20 +22,17 @@
 
 
 
-
 ## Сервер prod:
   - #### Подготовка инфраструктуры:
     - настройка возможности входа по паролю для root по сети (для jenkins)
-    - sudo apt install git -y
     - sudo apt install docker.io -y
-    - cd /etc
-    - git clone https://github.com/spring108/jenkins_ssh.git
-    - cd /etc/jenkins_ssh
-  - #### Файлы для build:
-    - bash /etc/jenkins_ssh/prod.sh - скрипт прода (с параметром), должен запускаться jenkins
+
+
 
 ## Сервер jenkins:
-    - шаг 1: запуск "bash /etc/jenkins_ssh/build.sh $myver" на сервере build
-    - шаг 2: запуск "bash /etc/jenkins_ssh/prod.sh $myver" на сервере prod
+  - #### Запуск сборки проекта и вынос на ПРОД:
+    - запуск pipeline-скрипта из репозитория https://github.com/spring108/jenkins_pipeline.git файл <b>/jenkins/pipeline.jenkins</b>
 
-## Смотрим http://prod_ip:80/index.html
+
+
+## Смотрим http://prod_ip:8080/hello
