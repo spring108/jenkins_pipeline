@@ -1,15 +1,14 @@
 FROM openjdk:8u151-stretch
 
 # Install pacakges
-####RUN apt update
 #RUN apt-get update
 
 # Install ssh
 RUN apt-get -y install openssh-client
 
 # Confugure ssh client
-COPY id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa
+#COPY id_rsa /root/.ssh/id_rsa
+#RUN chmod 600 /root/.ssh/id_rsa
 
 # Install gradle 4.2.1
 RUN mkdir /opt/gradle && \
