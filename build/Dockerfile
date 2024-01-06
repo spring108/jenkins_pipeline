@@ -1,6 +1,7 @@
 FROM openjdk:8u151-stretch
 
 # Install pacakges
+RUN apt update
 RUN apt-get update
 
 # Install ssh

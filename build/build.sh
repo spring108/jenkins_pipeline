@@ -10,19 +10,19 @@ my_version=$3
 
 if [ "$nexus_ip" = "" ]
 then
-	echo 'No NEXUS IP in parameter #1!! STOP'
+	echo '******** No NEXUS IP in parameter #1!! STOP'
 	exit
 fi
 
 if [ "$nexus_pass" = "" ]
 then
-	echo 'No NEXUS PASSWORD in parameter #2!! STOP'
+	echo '******** No NEXUS PASSWORD in parameter #2!! STOP'
 	exit
 fi
 
 if [ "$my_version" = "" ]
 then
-	echo 'No version in parameter #3, default v1.0.0 used'
+	echo '******** No version in parameter #3, default v1.0.0 used'
 	my_version="v1.0.0"
 fi
 
@@ -33,16 +33,16 @@ echo -e "{\x22insecure-registries\x22 : [\x22$nexus_ip:8123\x22]}" > /etc/docker
 service docker restart
 
 docker login $nexus_ip:8123 --username admin --password $nexus_pass
-echo 'docker login to NEXUS success'
+echo '******** docker login to NEXUS success'
 
 docker build -t build_environment:$my_version .
-echo 'docker build success'
+echo '******** docker build success'
 
 docker tag build_environment:$my_version $nexus_ip:8123/build_environment:$my_version
-echo 'docker tag success'
+echo '******** docker tag success'
 
 docker push $nexus_ip:8123/build_environment:$my_version
-echo 'docker push success'
+echo '******** docker push success'
 
 
-echo 'END build & push success!! *****************************************'
+echo '******** END build & push success!! *****************************************'
