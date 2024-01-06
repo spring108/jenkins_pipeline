@@ -29,7 +29,7 @@ fi
 
 
 
-echo "{'insecure-registries' : ['$nexus_ip:8123']}" > /etc/docker/daemon.json
+echo "{\x22insecure-registries\x22 : [\x22$nexus_ip:8123\x22]}" > /etc/docker/daemon.json
 service docker restart
 
 docker login $nexus_ip:8123 --username admin --password $nexus_pass
