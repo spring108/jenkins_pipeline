@@ -1,8 +1,8 @@
 FROM openjdk:8u151-stretch
 
 # Install pacakges
-RUN apt update
-RUN apt-get update
+####RUN apt update
+#RUN apt-get update
 
 # Install ssh
 RUN apt-get -y install openssh-client
