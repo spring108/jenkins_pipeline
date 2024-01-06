@@ -15,10 +15,10 @@
     - git clone https://github.com/spring108/jenkins_pipeline.git
     - cd /etc/jenkins_pipeline
   - #### Файлы:
-    - /etc/jenkins_pipeline/1build/Dockerfile
-    - /etc/jenkins_pipeline/1build/build.sh - скрипт сборщика
+    - /etc/jenkins_pipeline/build/Dockerfile
+    - /etc/jenkins_pipeline/build/build.sh - скрипт сборщика
   - #### Запуск:
-    - /etc/jenkins_pipeline/1build/build.sh [ nexus_ip ] [ nexus_pass ] [version (optional)]
+    - bash /etc/jenkins_pipeline/build/build.sh [ nexus_ip ] [ nexus_pass ] [version (optional)]
 
 
 
