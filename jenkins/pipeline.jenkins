@@ -5,6 +5,7 @@ pipeline {
       // need echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
       // need service docker restart
       image 'nexus-srv:8123/build_environment:v1.1.0'
+      registryUrl 'http://nexus-srv:8123'
       registryCredentialsId 'nexus_admin'    // must be in Jenkins
       }
     }
