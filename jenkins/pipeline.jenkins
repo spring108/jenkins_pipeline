@@ -5,18 +5,20 @@ pipeline {
       // need echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
       // need service docker restart
       image 'nexus-srv:8123/build_environment:v1.0.0'
-      registryCredentialsId 'nexus_admin'
+      registryCredentialsId 'nexus_admin'    // must be in Jenkins
       }
     }
 
+/*
   parameters {
     password(name: "nexus_pass", defaultValue: "", description: "Введите пароль от Nexus")
     }
-  
+*/
+
   stages {
     stage('Copy PROJECT source from GitHub') {
       steps {
-        git(url: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git', branch: 'master', poll: true, credentialsId: 'git')
+        git(url: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git', branch: 'master', poll: true)
         }
       }
 
