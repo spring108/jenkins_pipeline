@@ -19,6 +19,14 @@ pipeline {
         sh 'echo "******* END: Copy PROJECT source from GitHub *******"'
         }
       }
+  stage('Build war-file') {
+    steps {
+      sh 'echo "******* BEGIN: Build war-file *******"'
+      sh 'cd /etc/boxfuse-sample-java-war-hello && mvn package'
+      sh 'echo "******* END: Build war-file *******"'
+      }
+    }
+
 
 
 
@@ -39,20 +47,20 @@ pipeline {
       }
 */
 
-    stage('Build war-file') {
-      steps {
-        sh 'cd ./boxfuse-sample-java-war-hello && mvn package'
-        }
-      }
 
 
 
     stage('Copy FILES from GitHub') {
       steps {
-        git(url: 'https://github.com/spring108/jenkins_pipeline.git', branch: 'master', poll: true, credentialsId: 'git')
+        //git(url: 'https://github.com/spring108/jenkins_pipeline.git', branch: 'master', poll: true, credentialsId: 'git')
+        sh 'echo "******* BEGIN: Copy FILES from GitHub *******"'
+        sh 'cd /etc && git clone https://github.com/spring108/jenkins_pipeline.git'
+        sh 'echo "******* END: Copy FILES from GitHub *******"'
         }
       }
 
+
+/*
 
     stage('Prepare docker service') {
       steps {
@@ -87,6 +95,8 @@ EOF'''
         }
       }
 
+
+*/
 
     }
   }
