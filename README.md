@@ -34,8 +34,11 @@
     - nano /etc/hosts , добавить/редактировать:
       - 158.160.112.32 nexus-srv
       - 1.1.1.3 prod-srv
-    - в интерфейсе jenkins добавить agent docker
+    - в интерфейсе jenkins
+      - для agent docker установить два плагина: "Docker" и "Docker Pipeline"
+      - для авторизации в Nexus добавить: Настройка Jenkins \ Security \ Credentials \ New credentials \ "nexus_admin"
     - echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
+    - service docker restart
   - #### Запуск сборки проекта и вынос на ПРОД:
     - запуск pipeline-скрипта из репозитория https://github.com/spring108/jenkins_pipeline.git файл <b>/jenkins/pipeline.jenkins</b>
 

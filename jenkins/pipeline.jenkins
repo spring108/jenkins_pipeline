@@ -2,7 +2,10 @@ pipeline {
   agent {
     docker {     
       // need to install two plugins: "Docker" & "Docker Pipeline"
+      // need echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
+      // need service docker restart
       image 'nexus-srv:8123/build_environment:v1.0.0'
+      registryCredentialsId 'nexus_admin'
       }
     }
 
