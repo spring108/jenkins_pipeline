@@ -17,9 +17,11 @@ pipeline {
       }
 
     stage('Wait User Permission') {
-      input {
-        message "Confirm to continue"
-        ok "Go!"
+      steps {
+        input {
+          message "Confirm to continue"
+          ok "Go!"
+          }
         }
       }
 
