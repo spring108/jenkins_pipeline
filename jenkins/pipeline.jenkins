@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    docker {     
+    docker.withRegistry('http://nexus-srv:8123', 'nexus_admin') {
       // need to install two plugins: "Docker" & "Docker Pipeline"
       // need echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
       // need service docker restart
