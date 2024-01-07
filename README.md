@@ -42,7 +42,7 @@
       - для agent docker установить два плагина: "Docker" и "Docker Pipeline"
       - для авторизации в Nexus добавить: Настройка Jenkins \ Security \ Credentials \ New credentials \ "nexus_admin"
   - #### Запуск сборки проекта и вынос на ПРОД:
-    - запуск pipeline-скрипта из репозитория https://github.com/spring108/jenkins_pipeline.git файл <b>/jenkins/pipeline.jenkins</b>
+    - запуск pipeline-скрипта из репозитория https://github.com/spring108/jenkins_pipeline.git файл <b>jenkins/pipeline.jenkins</b>
 
 
 
