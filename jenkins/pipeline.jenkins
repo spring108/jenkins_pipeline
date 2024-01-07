@@ -9,19 +9,25 @@ pipeline {
       }
     }
 
+
+  stages {
+    stage('Copy PROJECT source from GitHub') {
+      steps {
+        //git(url: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git', branch: 'master', poll: true)
+        sh 'echo "******* BEGIN: Copy PROJECT source from GitHub *******"'
+        sh 'cd /etc && git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+        sh 'echo "******* END: Copy PROJECT source from GitHub *******"'
+        }
+      }
+
+
+
+
 /*
   parameters {
     password(name: "nexus_pass", defaultValue: "", description: "Введите пароль от Nexus")
     }
 */
-
-  stages {
-    stage('Copy PROJECT source from GitHub') {
-      steps {
-        git(url: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git', branch: 'master', poll: true)
-        }
-      }
-
 /*
     stage('Wait User Permission') {
       steps {
