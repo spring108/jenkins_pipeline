@@ -9,8 +9,9 @@ pipeline {
       }
     }
 
-/*
+
   stages {
+
     stage('Copy PROJECT source from GitHub') {
       steps {
         //git(url: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git', branch: 'master', poll: true)
@@ -19,83 +20,7 @@ pipeline {
         sh 'echo "******* END: Copy PROJECT source from GitHub *******"'
         }
       }
-  stage('Build war-file') {
-    steps {
-      sh 'echo "******* BEGIN: Build war-file *******"'
-      sh 'cd /etc/boxfuse-sample-java-war-hello && mvn package'
-      sh 'echo "******* END: Build war-file *******"'
-      }
-    }
-*/
 
-
-
-/*
-  parameters {
-    password(name: "nexus_pass", defaultValue: "", description: "Введите пароль от Nexus")
-    }
-*/
-/*
-    stage('Wait User Permission') {
-      steps {
-        input {
-          message "Confirm to continue"
-          ok "Go!"
-          }
-        }
-      }
-*/
-
-
-
-
-    stage('Copy FILES from GitHub') {
-      steps {
-        //git(url: 'https://github.com/spring108/jenkins_pipeline.git', branch: 'master', poll: true, credentialsId: 'git')
-        sh 'echo "******* BEGIN: Copy FILES from GitHub *******"'
-        sh 'cd /etc && git clone https://github.com/spring108/jenkins_pipeline.git'
-        sh 'echo "******* END: Copy FILES from GitHub *******"'
-        }
-      }
-
-
-/*
-
-    stage('Prepare docker service') {
-      steps {
-        sh '''echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
-        service docker restart
-        docker login nexus-srv:8123 --username admin --password $nexus_pass
-EOF'''
-        }
-      }
-
-    stage('Copy artifact (with rename) nearly Dockerfile') {
-      steps {
-        sh 'cp ./boxfuse-sample-java-war-hello/target/hello-1.0.war ./jenkins_pipeline/jenkins/hello.war'
-        }
-      }
-
-
-    stage('Make docker image by Dockerfile and hello.war') {
-      steps {
-        sh 'cd ./jenkins_pipeline/jenkins && docker build -t myweb2:v2.0.0 .'
-        sh '''docker tag myweb2:v2.0.0 nexus-srv:8123/myweb2:v2.0.0 && docker push nexus-srv:8123/myweb2:v2.0.0'''
-        }
-      }
-
-    stage('Run docker on prod-srv') {
-      steps {
-        sh 'ssh-keyscan -H prod-srv >> ~/.ssh/known_hosts'
-        sh '''ssh root@prod-srv << EOF
-	      docker pull nexus-srv:8123/myweb2:v2.0.0
-        docker run -d -p 8080:8080 nexus-srv:8123/myweb2:v2.0.0
-EOF'''
-        }
-      }
-
-
-*/
 
     }
   }
