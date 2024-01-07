@@ -35,6 +35,7 @@
       - 158.160.112.32 nexus-srv
       - 1.1.1.3 prod-srv
     - в интерфейсе jenkins добавить agent docker
+    - echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
   - #### Запуск сборки проекта и вынос на ПРОД:
     - запуск pipeline-скрипта из репозитория https://github.com/spring108/jenkins_pipeline.git файл <b>/jenkins/pipeline.jenkins</b>
 
