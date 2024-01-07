@@ -1,6 +1,7 @@
 pipeline {
   agent {
-    docker {
+    docker {     
+      // need to install two plugins: "Docker" & "Docker Pipeline"
       image 'nexus-srv:8123/build_environment:v1.0.0'
       }
     }
@@ -16,6 +17,7 @@ pipeline {
         }
       }
 
+/*
     stage('Wait User Permission') {
       steps {
         input {
@@ -24,7 +26,7 @@ pipeline {
           }
         }
       }
-
+*/
 
     stage('Build war-file') {
       steps {
