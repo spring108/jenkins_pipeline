@@ -6,7 +6,7 @@ pipeline {
       // need service docker restart
       alwaysPull true
       image 'nexus-srv:8123/build_environment:v1.1.0'
-      registryUrl 'http://nexus-srv:8123/'
+      registryUrl 'http://nexus-srv:8123'
       registryCredentialsId 'nexus_admin'    // must be in Jenkins
       }
     }
