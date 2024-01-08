@@ -35,14 +35,6 @@ pipeline {
       }
 
 
-    stage('Prepare docker service in image build_environment') {
-      steps {
-        sh 'echo "******* BEGIN: Prepare docker service in image build_environment *******"'
-        sh 'docker login nexus-srv:8123 --username admin --password 34-Nexus-!'
-        sh 'echo "******* END: Prepare docker service in image build_environment *******"'
-        }
-      }
-
 
     stage('Copy FILES from GitHub') {
       steps {
@@ -60,15 +52,34 @@ pipeline {
         }
       }
 
-    stage('Make docker image by Dockerfile and hello.war') {
+
+    stage('docker login to Nexus registry') {
       steps {
-        sh 'echo "******* BEGIN: Make docker image by Dockerfile and hello.war *******"'
+        withCredentials([usernamePassword(credentialsId: 'nexus_admin', passwordVariable: 'NEXUSPASS', usernameVariable: 'NEXUSUSERNAME')]) {
+          sh 'echo "******* BEGIN: docker login to Nexus registry *******"'
+          sh 'docker login nexus-srv:8123 --username $NEXUSUSERNAME --password $NEXUSPASS'
+          sh 'echo "******* END: docker login to Nexus registry *******"'
+          }
+        }
+      }
+    stage('Make new docker image by Dockerfile and hello.war, TAG it and PUSH to Nexus registry') {
+      steps {
+        sh 'echo "******* BEGIN: Make new docker image by Dockerfile and hello.war, TAG it and PUSH to Nexus registry *******"'
         sh 'cd /etc/jenkins_pipeline/jenkins && docker build -t myweb2:v2.0.0 .'
         sh 'docker tag myweb2:v2.0.0 nexus-srv:8123/myweb2:v2.0.0'
         sh 'docker push nexus-srv:8123/myweb2:v2.0.0'
-        sh 'echo "******* END: Make docker image by Dockerfile and hello.war *******"'
+        sh 'echo "******* END: Make new docker image by Dockerfile and hello.war, TAG it and PUSH to Nexus registry *******"'
         }
       }
+
+    stage('on prod-srv: PULL & RUN docker image') {
+      steps {
+        sh 'echo "******* BEGIN: on prod-srv: PULL & RUN docker image *******"'
+        sh 'ssh root@prod-srv "docker pull nexus-srv:8123/myweb2:v2.0.0 && docker run -d -p 8080:8080 nexus-srv:8123/myweb2:v2.0.0"'
+        sh 'echo "******* END: on prod-srv: PULL & RUN docker image *******"'
+        }
+      }
+
 
 
     }
