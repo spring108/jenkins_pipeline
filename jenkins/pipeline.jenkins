@@ -37,7 +37,10 @@ pipeline {
 
     stage('Prepare docker service in image build_environment') {
       steps {
+        sh 'echo "******* BEGIN: Prepare docker service in image build_environment *******"'
+        sh 'cat /etc/docker/daemon.json'
         sh 'docker login nexus-srv:8123 --username admin --password 34-Nexus-!'
+        sh 'echo "******* END: Prepare docker service in image build_environment *******"'
         }
       }
 
