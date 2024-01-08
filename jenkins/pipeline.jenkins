@@ -37,8 +37,7 @@ pipeline {
 
     stage('Prepare docker service in image build_environment') {
       steps {
-        docker login nexus-srv:8123 --username admin --password 34-Nexus-!
-EOF'''
+        sh 'docker login nexus-srv:8123 --username admin --password 34-Nexus-!'
         }
       }
 
