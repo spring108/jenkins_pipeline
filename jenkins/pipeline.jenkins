@@ -9,7 +9,9 @@ pipeline {
       image 'nexus-srv:8123/build_environment:v1.1.0'
       registryUrl 'http://nexus-srv:8123'
       registryCredentialsId 'nexus_admin'    // must be in Jenkins
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
+
+      //args '-v /var/run/docker.sock:/var/run/docker.sock'
+      args '--privileged --user="root"'
       }
     }
 
