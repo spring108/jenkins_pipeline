@@ -26,6 +26,13 @@ pipeline {
         sh 'echo "******* END: Copy PROJECT source from GitHub *******"'
         }
       }
+    stage('Build war-file') {
+      steps {
+        sh 'echo "******* BEGIN: Build war-file *******"'
+        sh 'cd /etc/boxfuse-sample-java-war-hello && mvn package'
+        sh 'echo "******* END: Build war-file *******"'
+        }
+      }
 
 
     }
