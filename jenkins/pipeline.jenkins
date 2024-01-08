@@ -38,13 +38,12 @@ pipeline {
     stage('Prepare docker service in image build_environment') {
       steps {
         sh 'echo "******* BEGIN: Prepare docker service in image build_environment *******"'
-        sh 'cat /etc/docker/daemon.json'
         sh 'docker login nexus-srv:8123 --username admin --password 34-Nexus-!'
         sh 'echo "******* END: Prepare docker service in image build_environment *******"'
         }
       }
 
-/*
+
     stage('Copy FILES from GitHub') {
       steps {
         //git(url: 'https://github.com/spring108/jenkins_pipeline.git', branch: 'master', poll: true, credentialsId: 'git')
@@ -53,7 +52,14 @@ pipeline {
         sh 'echo "******* END: Copy FILES from GitHub *******"'
         }
       }
-*/
+    stage('Copy artifact (with rename) nearly Dockerfile') {
+      steps {
+        sh 'echo "******* BEGIN: Copy artifact (with rename) nearly Dockerfile *******"'
+        sh 'cp /etc/boxfuse-sample-java-war-hello/target/hello-1.0.war /etc/jenkins_pipeline/jenkins/hello.war'
+        sh 'echo "******* END: Copy artifact (with rename) nearly Dockerfile *******"'
+        }
+      }
+
 
     }
   }
