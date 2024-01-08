@@ -11,7 +11,7 @@ pipeline {
       registryCredentialsId 'nexus_admin'    // must be in Jenkins
 
       //args '-v /var/run/docker.sock:/var/run/docker.sock'
-      args '--privileged --user="root"'
+      args '--privileged --user="root" -v /etc/docker/:/etc/docker/'
       }
     }
 
@@ -37,8 +37,6 @@ pipeline {
 
     stage('Prepare docker service in image build_environment') {
       steps {
-        sh '''echo '{"insecure-registries" : ["158.160.127.176:8123"]}' > /etc/docker/daemon.json
-        sudo service docker restart
         docker login nexus-srv:8123 --username admin --password 34-Nexus-!
 EOF'''
         }
