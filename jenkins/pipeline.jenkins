@@ -60,6 +60,16 @@ pipeline {
         }
       }
 
+    stage('Make docker image by Dockerfile and hello.war') {
+      steps {
+        sh 'echo "******* BEGIN: Make docker image by Dockerfile and hello.war *******"'
+        sh 'cd /etc/jenkins_pipeline/jenkins && docker build -t myweb2:v2.0.0 .'
+        sh 'docker tag myweb2:v2.0.0 nexus-srv:8123/myweb2:v2.0.0'
+        sh 'docker push nexus-srv:8123/myweb2:v2.0.0'
+        sh 'echo "******* END: Make docker image by Dockerfile and hello.war *******"'
+        }
+      }
+
 
     }
   }
