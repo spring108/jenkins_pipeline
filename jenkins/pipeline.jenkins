@@ -11,7 +11,7 @@ pipeline {
       registryCredentialsId 'nexus_admin'    // must be in Jenkins
 
       //args '-v /var/run/docker.sock:/var/run/docker.sock'
-      args '--privileged --user="root" -v /etc/docker/daemon.json:/etc/docker/daemon.json -v /etc/hosts:/etc/hosts -v /var/run/docker.sock:/var/run/docker.sock -v /root/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub'
+      args '--privileged --user="root" -v /etc/docker/daemon.json:/etc/docker/daemon.json -v /etc/hosts:/etc/hosts -v /var/run/docker.sock:/var/run/docker.sock -v /root/.ssh:/root/.ssh:ro'
       }
     }
 
