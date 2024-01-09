@@ -79,8 +79,9 @@ pipeline {
     stage('on prod-srv: PULL & RUN docker image') {
       steps {
         sh 'echo "******* BEGIN: on prod-srv: PULL & RUN docker image *******"'
-        sh 'echo "******* jenkins now runn by user" && whoami'
-        sh 'ssh root@prod-srv "docker pull nexus-srv:8123/myweb2:$version && docker run -d -p 8080:8080 nexus-srv:8123/myweb2:$version"'
+        sh 'echo "******* jenkins now running by user = " && whoami'
+        sh 'ssh root@prod-srv "docker pull nexus-srv:8123/myweb2:$version"'
+        sh 'ssh root@prod-srv "docker run -d -p 8080:8080 nexus-srv:8123/myweb2:$version"'
         sh 'echo "******* END: on prod-srv: PULL & RUN docker image *******"'
         }
       }
