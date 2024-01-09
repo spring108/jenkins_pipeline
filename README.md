@@ -26,6 +26,10 @@
   - #### Подготовка инфраструктуры:
     - настройка возможности входа по паролю для root по сети (для jenkins)
     - sudo apt install docker.io -y
+    - echo '{"insecure-registries" : ["nexus-srv:8123"]}' > /etc/docker/daemon.json
+    - nano /etc/hosts , добавить после каждой перезагрузки:
+      - echo -e '\n158.160.125.175 nexus-srv\n' >> /etc/hosts
+    - service docker restart
 
 
 
@@ -44,6 +48,7 @@
     - в интерфейсе jenkins
       - для agent docker установить два плагина: "Docker" и "Docker Pipeline"
       - для авторизации в Nexus добавить: Настройка Jenkins \ Security \ Credentials \ New credentials \ "nexus_admin"
+    - настройка возможности входа по ключам для root по сети (для jenkins)
   - #### Запуск сборки проекта и вынос на ПРОД:
     - запуск pipeline-скрипта из репозитория https://github.com/spring108/jenkins_pipeline.git файл <b>jenkins/pipeline.jenkins</b>
     - необходим проброс сокета docker по статье https://habr.com/ru/companies/ua-hosting/articles/488536/ (args '-v /var/run/docker.sock:/var/run/docker.sock')
