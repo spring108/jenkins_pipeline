@@ -15,6 +15,9 @@ pipeline {
       }
     }
 
+  parameters {
+    string(name: "version", defaultValue: "v2.0.0", trim: true, description: "Введите версию нового docker-image")
+    }
 
   stages {
 
@@ -65,6 +68,7 @@ pipeline {
     stage('Make new docker image by Dockerfile and hello.war, TAG it and PUSH to Nexus registry') {
       steps {
         sh 'echo "******* BEGIN: Make new docker image by Dockerfile and hello.war, TAG it and PUSH to Nexus registry *******"'
+        sh 'echo "******* New Docker-Image Artifact Vergion is $params.version"'
         sh 'cd /etc/jenkins_pipeline/jenkins && docker build -t myweb2:v2.0.0 .'
         sh 'docker tag myweb2:v2.0.0 nexus-srv:8123/myweb2:v2.0.0'
         sh 'docker push nexus-srv:8123/myweb2:v2.0.0'

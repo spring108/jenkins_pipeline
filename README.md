@@ -40,8 +40,7 @@
       - sudo usermod -aG docker jenkins //добавить пользователя jenkins в группу root
       - reboot //нужна перезагрузка
     - nano /etc/hosts , добавить после каждой перезагрузки:
-      - 158.160.112.32 nexus-srv
-      - 1.1.1.3 prod-srv
+      - echo -e '\n158.160.125.175 nexus-srv\n158.160.101.95 prod-srv\n' >> /etc/hosts
     - в интерфейсе jenkins
       - для agent docker установить два плагина: "Docker" и "Docker Pipeline"
       - для авторизации в Nexus добавить: Настройка Jenkins \ Security \ Credentials \ New credentials \ "nexus_admin"
